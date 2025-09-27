@@ -1,3 +1,41 @@
+from flask import Flask, render_template, request
+import csv
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/adhesion', methods=['GET', 'POST'])
+def adhesion():
+    if request.method == 'POST':
+        data = {
+            'nom': request.form['nom'],
+            'prenom': request.form['prenom'],
+            'date_naissance': request.form['date_naissance'],
+            'adresse': request.form['adresse'],
+            'code_postal': request.form['code_postal'],
+            'ville': request.form['ville'],
+            'pays': request.form['pays'],
+            'telephone': request.form['telephone'],
+            'email': request.form['email']
+        }
+
+        # Sauvegarder dans un fichier CSV
+        with open('demandes_adhesion.csv', 'a', newline='') as f:
+            writer = csv.DictWriter(f, fieldnames=data.keys())
+            if f.tell() == 0:
+                writer.writeheader()
+            writer.writerow(data)
+
+        return render_template('merci_adhesion.html', prenom=data['prenom'])
+
+    return render_template('adhesion.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
