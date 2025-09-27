@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Merci pour votre demande - {{ association }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>Merci pour votre demande d’adhésion !</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Accueil</a>
+    </nav>
+  </header>
+  <section>
+    <p>Nous reviendrons vers vous rapidement.</p>
+  </section>
+</body>
+</html>
+

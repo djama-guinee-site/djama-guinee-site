@@ -1,0 +1,30 @@
+nano templates/index.html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accueil - {{ association }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>Bienvenue sur le site de l’association {{ association }}</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Accueil</a> |
+      <a href="{{ url_for('adhesion') }}">Demande d’adhésion</a>
+    </nav>
+  </header>
+  <section>
+    <h2>Qui sommes-nous ?</h2>
+    <p>Der Zweck des Vereins ist die Förderung der Hilfe für rassistisch, religiös Verfolgte und für Flüchtlinge.</p>
+    <h2>Ansprechpartner</h2>
+    <p><strong>Saidou Cherif Haidara</strong></p>
+    <p>Telefon: 01573 7201532</p>
+    <p>E-Mail: <a href="mailto:Djama-guinee-kreis-re@gmx.de">Djama-guinee-kreis-re(at)gmx.de</a></p>
+  </section>
+  <footer>
+    <p>&copy; 2025 {{ association }}</p>
+  </footer>
+</body>
+</html>
+
